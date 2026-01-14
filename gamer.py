@@ -1,6 +1,10 @@
 # Jeu de dé - Dice Roller Application avec Tkinter
 
 import tkinter as tk
+
+import random
+
+import winsound   # Module pour ajouter un effet sonore (Windows uniquement)
 import random
 
 # Classe représentant toute l'application
@@ -123,6 +127,10 @@ class DiceRollerApp:
             
             self.dice_label.config(text=str(value))
             
+            # Effet sonore de lancer de dé (Windows uniquement)
+            
+            winsound.PlaySound("SystemAsterisk", winsound.SND_ALIAS | winsound.SND_ASYNC)
+            
             self.root.after(100, lambda: self.animate(count + 1))
             
         else:
@@ -132,6 +140,11 @@ class DiceRollerApp:
             self.dice_label.config(text=str(final_value))
             
             self.result_label.config(text=f"Tu as lancé {final_value}!")
+            
+            # Son final
+            
+            winsound.PlaySound("SystemExclamation", winsound.SND_ALIAS | winsound.SND_ASYNC)
+            
             self.roll_button.config(state=tk.NORMAL)
 
 # Lancement de l'application
